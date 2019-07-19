@@ -72,3 +72,14 @@ southeastasia  Datacenter-Core-1803-with-Containers-smalldisk
 southeastasia  Datacenter-Core-1809-with-Containers-smalldisk
 southeastasia  Datacenter-Core-1903-with-Containers-smalldisk
 ```
+
+
+## User names and passwords
+
+Run the following command to get the usernames and passwords for my virtual machine:
+
+```
+./passwords.sh
+```
+
+
