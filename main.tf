@@ -1,24 +1,60 @@
 provider "azurerm" {}
 
 resource "azurerm_resource_group" "main" {
-  name     = "vm-test-ked"
+  name     = "${var.prefix}"
   location = "southeastasia"
 }
 
 
 resource "azurerm_virtual_network" "main" {
-  name                = "vm-test-ked-network"
+  name                = "${var.prefix}-network"
   address_space       = ["10.0.0.0/16"]
   location            = "${azurerm_resource_group.main.location}"
   resource_group_name = "${azurerm_resource_group.main.name}"
 }
-/*
+
+
 resource "azurerm_subnet" "internal" {
   name                 = "internal"
   resource_group_name  = "${azurerm_resource_group.main.name}"
   virtual_network_name = "${azurerm_virtual_network.main.name}"
   address_prefix       = "10.0.2.0/24"
 }
+
+// resource "azurerm_public_ip" "vmPublicIp" {
+//     name                         = "${var.prefix}-ip"
+//     location                     = "eastus"
+//     resource_group_name          = "${azurerm_resource_group.myterraformgroup.name}"
+//     allocation_method            = "Dynamic"
+
+//     tags = {
+//         environment = "Staging"
+//     }
+// }
+
+// resource "azurerm_network_security_group" "myterraformnsg" {
+//     name                = "${var.prefix}-"
+//     location            = "eastus"
+//     resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
+    
+//     security_rule {
+//         name                       = "RDP"
+//         priority                   = 1001
+//         direction                  = "Inbound"
+//         access                     = "Allow"
+//         protocol                   = "Tcp"
+//         source_port_range          = "*"
+//         destination_port_range     = "3389"
+//         source_address_prefix      = "*"
+//         destination_address_prefix = "*"
+//     }
+
+//     tags = {
+//         environment = "Staging"
+//     }
+// }
+
+
 
 resource "azurerm_network_interface" "main" {
   name                = "${var.prefix}-nic"
@@ -32,6 +68,7 @@ resource "azurerm_network_interface" "main" {
   }
 }
 
+
 resource "azurerm_virtual_machine" "main" {
   name                  = "${var.prefix}-vm"
   location              = "${azurerm_resource_group.main.location}"
@@ -40,18 +77,20 @@ resource "azurerm_virtual_machine" "main" {
   vm_size               = "Standard_DS1_v2"
 
   # Uncomment this line to delete the OS disk automatically when deleting the VM
-  # delete_os_disk_on_termination = true
+  delete_os_disk_on_termination = true
 
 
   # Uncomment this line to delete the data disks automatically when deleting the VM
-  # delete_data_disks_on_termination = true
+  delete_data_disks_on_termination = true
 
   storage_image_reference {
-    publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "16.04-LTS"
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2008-R2-SP1"
     version   = "latest"
   }
+
+
   storage_os_disk {
     name              = "myosdisk1"
     caching           = "ReadWrite"
@@ -59,19 +98,23 @@ resource "azurerm_virtual_machine" "main" {
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
-    computer_name  = "hostname"
-    admin_username = "testadmin"
-    admin_password = "Password1234!"
+    computer_name  = "myvm01"
+    admin_username = "${var.vm_admin_username}"
+    admin_password = "${var.vm_admin_password}"
   }
-  os_profile_linux_config {
-    disable_password_authentication = false
+
+  os_profile_windows_config {
+    provision_vm_agent        = true
+    enable_automatic_upgrades = true
   }
+
+
+
   tags = {
     environment = "staging"
   }
 }
 
-*/
 
 
 output "network-name" {
