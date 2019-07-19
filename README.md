@@ -24,3 +24,8 @@ terraform apply
 ```
 
 
+- You run a terraform destroy
+
+```
+terraform destroy
+```

@@ -5,14 +5,14 @@ resource "azurerm_resource_group" "main" {
   location = "southeastasia"
 }
 
-/*
+
 resource "azurerm_virtual_network" "main" {
-  name                = "${var.prefix}-network"
+  name                = "vm-test-ked-network"
   address_space       = ["10.0.0.0/16"]
   location            = "${azurerm_resource_group.main.location}"
   resource_group_name = "${azurerm_resource_group.main.name}"
 }
-
+/*
 resource "azurerm_subnet" "internal" {
   name                 = "internal"
   resource_group_name  = "${azurerm_resource_group.main.name}"
@@ -72,3 +72,8 @@ resource "azurerm_virtual_machine" "main" {
 }
 
 */
+
+
+output "network-name" {
+    value = "${azurerm_virtual_network.main.name}"
+}
