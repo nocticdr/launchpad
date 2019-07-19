@@ -54,8 +54,6 @@ resource "azurerm_network_security_group" "main" {
     }
 }
 
-
-
 resource "azurerm_network_interface" "main" {
   name                = "${var.prefix}-nic"
   location            = "${azurerm_resource_group.main.location}"
@@ -69,8 +67,6 @@ resource "azurerm_network_interface" "main" {
     public_ip_address_id = "${azurerm_public_ip.main.id}"
   }
 }
-
-
 resource "azurerm_virtual_machine" "main" {
   name                  = "${var.prefix}-vm"
   location              = "${azurerm_resource_group.main.location}"
@@ -110,13 +106,10 @@ resource "azurerm_virtual_machine" "main" {
     enable_automatic_upgrades = true
   }
 
-
-
   tags = {
     environment = "staging"
   }
 }
-
 
 
 output "network-name" {
