@@ -82,4 +82,10 @@ Run the following command to get the usernames and passwords for my virtual mach
 ./passwords.sh
 ```
 
+You should see output similar to:
 
+```
+
+Username is: myuser
+Password is: mypassword
+```
