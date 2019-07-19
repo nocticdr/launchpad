@@ -21,38 +21,38 @@ resource "azurerm_subnet" "internal" {
   address_prefix       = "10.0.2.0/24"
 }
 
-// resource "azurerm_public_ip" "vmPublicIp" {
-//     name                         = "${var.prefix}-ip"
-//     location                     = "eastus"
-//     resource_group_name          = "${azurerm_resource_group.myterraformgroup.name}"
-//     allocation_method            = "Dynamic"
+resource "azurerm_public_ip" "main" {
+    name                         = "${var.prefix}-ip"
+    location                     = "${var.region}"
+    resource_group_name          = "${azurerm_resource_group.main.name}"
+    allocation_method            = "Dynamic"
 
-//     tags = {
-//         environment = "Staging"
-//     }
-// }
+    tags = {
+        environment = "Staging"
+    }
+}
 
-// resource "azurerm_network_security_group" "myterraformnsg" {
-//     name                = "${var.prefix}-"
-//     location            = "eastus"
-//     resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
+resource "azurerm_network_security_group" "main" {
+    name                = "${var.prefix}-nsg"
+    location            = "${var.region}"
+    resource_group_name = "${azurerm_resource_group.main.name}"
     
-//     security_rule {
-//         name                       = "RDP"
-//         priority                   = 1001
-//         direction                  = "Inbound"
-//         access                     = "Allow"
-//         protocol                   = "Tcp"
-//         source_port_range          = "*"
-//         destination_port_range     = "3389"
-//         source_address_prefix      = "*"
-//         destination_address_prefix = "*"
-//     }
+    security_rule {
+        name                       = "RDP"
+        priority                   = 1001
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "3389"
+        source_address_prefix      = "*"
+        destination_address_prefix = "*"
+    }
 
-//     tags = {
-//         environment = "Staging"
-//     }
-// }
+    tags = {
+        environment = "Staging"
+    }
+}
 
 
 
@@ -61,10 +61,12 @@ resource "azurerm_network_interface" "main" {
   location            = "${azurerm_resource_group.main.location}"
   resource_group_name = "${azurerm_resource_group.main.name}"
 
+  network_security_group_id = "${azurerm_network_security_group.main.id}"
   ip_configuration {
     name                          = "testconfiguration1"
     subnet_id                     = "${azurerm_subnet.internal.id}"
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id = "${azurerm_public_ip.main.id}"
   }
 }
 
@@ -120,3 +122,5 @@ resource "azurerm_virtual_machine" "main" {
 output "network-name" {
     value = "${azurerm_virtual_network.main.name}"
 }
+
+
