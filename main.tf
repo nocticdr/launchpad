@@ -5,7 +5,6 @@ resource "azurerm_resource_group" "main" {
   location = "southeastasia"
 }
 
-
 resource "azurerm_virtual_network" "main" {
   name                = "${var.prefix}-network"
   address_space       = ["10.0.0.0/16"]
