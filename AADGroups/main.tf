@@ -1,5 +1,5 @@
 data "azuread_user" "azureuser" {
-  user_principal_name = "dalini.selliah@qnet.net"
+  user_principal_name = "username@domain.com"
 }
 
 resource "azuread_group" "azuregroup" {
