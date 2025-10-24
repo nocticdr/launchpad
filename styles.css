@@ -9,6 +9,27 @@
     --border: #475569;
     --success: #10b981;
     --shadow: rgba(0, 0, 0, 0.3);
+    
+    /* Category colors */
+    --color-general: #8b5cf6;
+    --color-infra: #3b82f6;
+    --color-security: #ef4444;
+    --color-devops: #10b981;
+}
+
+/* Light mode */
+body.light-mode {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-card: #f1f5f9;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --border: #cbd5e1;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode {
+    background: linear-gradient(135deg, var(--bg-primary) 0%, #e2e8f0 100%);
 }
 
 * {
@@ -33,8 +54,9 @@ body {
 
 header {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     animation: fadeIn 0.6s ease-out;
+    position: relative;
 }
 
 h1 {
@@ -50,7 +72,16 @@ h1 {
 .subtitle {
     color: var(--text-secondary);
     font-size: 0.9rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
+}
+
+.header-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 }
 
 .status {
@@ -60,8 +91,26 @@ h1 {
     padding: 0.4rem 0.8rem;
     background: var(--bg-secondary);
     border-radius: 50px;
-    font-size: 0.8rem;
-    margin-top: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.theme-toggle {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: var(--bg-card);
+    border-color: var(--accent);
 }
 
 .status-dot {
@@ -107,18 +156,17 @@ main {
 .category-header {
     margin-bottom: 0.75rem;
     padding-bottom: 0.4rem;
-    border-bottom: 2px solid var(--border);
+    border-bottom: 2px solid;
 }
 
 .category-title {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--text-primary);
 }
 
 .links-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 0.75rem;
 }
 
@@ -126,12 +174,19 @@ main {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 1rem;
+    padding: 0.6rem 0.75rem;
     text-decoration: none;
     color: var(--text-primary);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    min-height: 95px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.4rem;
 }
 
 .link-card::before {
@@ -141,50 +196,164 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--accent) 0%, transparent 100%);
+    background: linear-gradient(135deg, currentColor 0%, transparent 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 .link-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-4px) scale(1.02);
     box-shadow: 0 8px 24px var(--shadow);
-    border-color: var(--accent);
+    border-color: currentColor;
 }
 
 .link-card:hover::before {
-    opacity: 0.1;
+    opacity: 0.15;
 }
 
 .link-card:active {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.01);
 }
 
-.link-name {
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 0;
+/* Logo styles */
+.link-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    flex-shrink: 0;
+}
+
+.link-logo.emoji {
+    font-size: 2.5rem;
+    width: auto;
+    height: auto;
+    filter: none;
+    line-height: 1;
+}
+
+/* Environment cards: logo on left, text on right */
+.link-card.has-environments {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.link-card.has-environments .link-logo {
+    width: 36px;
+    height: 36px;
+    margin-top: 0.25rem;
+}
+
+.link-card.has-environments .link-logo.emoji {
+    font-size: 2.2rem;
+}
+
+.link-card.has-environments .link-content {
+    flex: 1;
+    align-items: flex-start;
+    text-align: left;
+    min-width: 0;
+}
+
+/* Content styles */
+.link-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
     position: relative;
     z-index: 1;
 }
 
-.link-url {
-    display: none;
+.link-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+.link-tagline {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    line-height: 1.2;
+    opacity: 0.75;
+}
+
+.link-card.has-environments .link-tagline {
+    font-size: 0.62rem;
 }
 
 .external-icon {
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    width: 14px;
-    height: 14px;
-    opacity: 0.5;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 16px;
+    height: 16px;
+    opacity: 0.3;
     transition: opacity 0.3s ease;
     z-index: 1;
 }
 
 .link-card:hover .external-icon {
-    opacity: 1;
+    opacity: 0.6;
+}
+
+/* Environment badges */
+.env-badges {
+    display: flex;
+    width: 100%;
+    margin-top: auto;
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+    border-radius: 0 0 7px 7px;
+}
+
+.env-badge {
+    flex: 1;
+    padding: 0.4rem 0.25rem;
+    text-align: center;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    text-decoration: none;
+    color: inherit;
+}
+
+.env-badge:first-child {
+    border-right: 1px solid var(--border);
+}
+
+.env-badge:hover {
+    background: currentColor;
+    color: var(--bg-primary);
+    opacity: 0.9;
+}
+
+.env-badge.prod {
+    color: #ef4444;
+}
+
+.env-badge.dev {
+    color: #10b981;
+}
+
+/* Cards with environments are not clickable */
+.link-card.has-environments {
+    cursor: default;
+    pointer-events: none;
+}
+
+.link-card.has-environments .env-badges {
+    pointer-events: all;
 }
 
 footer {
@@ -227,13 +396,41 @@ footer {
     h1 {
         font-size: 1.5rem;
     }
+    
+    .header-controls {
+        position: static;
+        justify-content: center;
+        margin-top: 1rem;
+    }
 
     .links-grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     }
 
     .category-title {
         font-size: 1.1rem;
+    }
+    
+    .link-title {
+        font-size: 0.8rem;
+    }
+    
+    .link-logo {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .link-logo.emoji {
+        font-size: 2rem;
+    }
+    
+    .link-card.has-environments .link-logo {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .link-card.has-environments .link-logo.emoji {
+        font-size: 1.5rem;
     }
 }
 

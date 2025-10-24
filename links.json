@@ -1,75 +1,164 @@
 {
-    "categories": [
-      {
-        "name": "Infra",
-        "links": [
-          {
-            "name": "Azure Portal",
-            "url": "https://portal.azure.com"
-          },
-          {
-            "name": "AWS Console",
-            "url": "https://console.aws.amazon.com"
-          },
-          {
-            "name": "Pricing Calculator",
-            "url": "https://your-pricing-calculator.pages.dev"
-          },
-          {
-            "name": "Resource Manager",
-            "url": "https://resources.azure.com"
-          }
-        ]
-      },
-      {
-        "name": "Security",
-        "links": [
-          {
-            "name": "Microsoft Defender",
-            "url": "https://security.microsoft.com"
-          },
-          {
-            "name": "Azure AD",
-            "url": "https://aad.portal.azure.com"
-          },
-          {
-            "name": "Key Vault",
-            "url": "https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.KeyVault%2Fvaults"
-          },
-          {
-            "name": "Compliance Center",
-            "url": "https://compliance.microsoft.com"
-          }
-        ]
-      },
-      {
-        "name": "DevOps",
-        "links": [
-          {
-            "name": "Azure DevOps",
-            "url": "https://dev.azure.com"
-          },
-          {
-            "name": "GitHub",
-            "url": "https://github.com"
-          },
-          {
-            "name": "Jira",
-            "url": "https://your-company.atlassian.net"
-          },
-          {
-            "name": "Jenkins",
-            "url": "https://jenkins.your-company.com"
-          },
-          {
-            "name": "Kubernetes Dashboard",
-            "url": "https://k8s.your-company.com"
-          }
-        ]
-      }
-    ],
-    "metadata": {
-      "version": "1.0.0",
-      "lastUpdated": "2025-10-24"
+  "categories": [
+    {
+      "name": "General",
+      "color": "#8b5cf6",
+      "links": [
+        {
+          "title": "Freshservice",
+          "tagline": "Ticketing System",
+          "url": "https://example.com/freshservice",
+          "logo": "https://assets.freshservice.com/fs-portal/fs-logo.svg",
+          "size": "large"
+        },
+        {
+          "title": "COPE",
+          "tagline": "SharePoint Online",
+          "url": "https://example.com/cope",
+          "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/microsoft-sharepoint.svg",
+          "size": "medium"
+        },
+        {
+          "title": "Outline KB",
+          "tagline": "Knowledge Base",
+          "url": "https://example.com/kb",
+          "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/outline.svg",
+          "size": "small"
+        }
+      ]
+    },
+    {
+      "name": "Project",
+      "color": "#5b86f6",
+      "links": [
+        {
+          "title": "ACE",
+          "tagline": "Pricing Calculator",
+          "url": "#",
+          "logo": "💰",
+          "size": "small"
+        },
+        {
+          "title": "TAP",
+          "tagline": "Tech Assessment Portal",
+          "url": "#",
+          "logo": "📋",
+          "size": "small"
+        }
+      ]
+    },
+    {
+      "name": "Infrastructure",
+      "color": "#3b82f6",
+      "links": [
+        {
+          "title": "Azure Portal",
+          "tagline": "Cloud infrastructure",
+          "url": "https://example.com/azure",
+          "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/azure.svg",
+          "size": "large"
+        },
+        {
+          "title": "AWS Console",
+          "tagline": "QNET environment",
+          "url": "https://example.com/aws",
+          "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/aws.svg",
+          "size": "large"
+        },
+        {
+          "title": "Uptime Kuma",
+          "tagline": "Service monitoring",
+          "url": "https://example.com/uptime",
+          "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/uptime-kuma.svg",
+          "size": "medium"
+        },
+        {
+          "title": "NetBird",
+          "tagline": "VPN & networking",
+          "url": "https://example.com/netbird",
+          "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/netbird.svg",
+          "size": "small"
+        },
+        {
+          "title": "FriDash",
+          "tagline": "Monitoring Dashboard",
+          "url": "https://example.com/fridash",
+          "logo": "📈",
+          "size": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Security",
+      "color": "#ef4444",
+      "links": [
+        {
+          "title": "Falcon",
+          "tagline": "Entra ID Security Posture",
+          "url": "https://example.com/falcon",
+          "logo": "🦅",
+          "size": "large"
+        },
+        {
+          "title": "HostGuard",
+          "tagline": "DFIR Reports Dashboard",
+          "url": "https://example.com/hostguard",
+          "logo": "🔒",
+          "size": "medium"
+        },
+        {
+          "title": "Compliance Center",
+          "tagline": "Microsoft compliance",
+          "url": "https://example.com/compliance",
+          "logo": "✅",
+          "size": "small"
+        }
+      ]
+    },
+    {
+      "name": "DevOps",
+      "color": "#10b981",
+      "links": [
+        {
+          "title": "Hoppscotch",
+          "tagline": "API testing platform",
+          "url": "https://example.com/hoppscotch",
+          "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/hoppscotch.svg",
+          "size": "large"
+        },
+        {
+          "title": "ArgoCD",
+          "tagline": "K8s Container Management",
+          "logo": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/argo-cd.svg",
+          "prodUrl": "https://example.com/argocd-prod",
+          "devUrl": "https://example.com/argocd-dev"
+        },
+        {
+          "title": "Jira",
+          "tagline": "Project management",
+          "url": "https://example.com/jira",
+          "logo": "https://cdn.worldvectorlogo.com/logos/jira-3.svg",
+          "size": "small"
+        },
+        {
+          "title": "Jenkins",
+          "tagline": "Build automation",
+          "url": "https://example.com/jenkins",
+          "logo": "🔧",
+          "size": "small"
+        },
+        {
+          "title": "K8s Dashboard",
+          "tagline": "Kubernetes cluster",
+          "url": "https://example.com/k8s",
+          "logo": "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg",
+          "size": "medium"
+        }
+      ]
     }
+  ],
+  "metadata": {
+    "version": "2.0.0",
+    "lastUpdated": "2025-10-24"
   }
+}

@@ -13,12 +13,18 @@
 <body>
     <div class="container">
         <header>
-            <h1>LaunchPad</h1>
-            <p class="subtitle">Quick access to all your platforms</p>
-            <div class="status" id="status">
-                <span class="status-dot online"></span>
-                <span id="status-text">Online</span>
+            <div class="header-controls">
+                <div class="status" id="status">
+                    <span class="status-dot online"></span>
+                    <span id="status-text">Online</span>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <span id="theme-icon">🌙</span>
+                    <span id="theme-text">Dark</span>
+                </button>
             </div>
+            <h1>LaunchPad</h1>
+            <p class="subtitle">Quick access to all platforms</p>
         </header>
 
         <main id="dashboard">
@@ -33,3 +39,4 @@
     <script src="app.js"></script>
 </body>
 </html>
+
