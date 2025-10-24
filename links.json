@@ -1,0 +1,75 @@
+{
+    "categories": [
+      {
+        "name": "Infra",
+        "links": [
+          {
+            "name": "Azure Portal",
+            "url": "https://portal.azure.com"
+          },
+          {
+            "name": "AWS Console",
+            "url": "https://console.aws.amazon.com"
+          },
+          {
+            "name": "Pricing Calculator",
+            "url": "https://your-pricing-calculator.pages.dev"
+          },
+          {
+            "name": "Resource Manager",
+            "url": "https://resources.azure.com"
+          }
+        ]
+      },
+      {
+        "name": "Security",
+        "links": [
+          {
+            "name": "Microsoft Defender",
+            "url": "https://security.microsoft.com"
+          },
+          {
+            "name": "Azure AD",
+            "url": "https://aad.portal.azure.com"
+          },
+          {
+            "name": "Key Vault",
+            "url": "https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.KeyVault%2Fvaults"
+          },
+          {
+            "name": "Compliance Center",
+            "url": "https://compliance.microsoft.com"
+          }
+        ]
+      },
+      {
+        "name": "DevOps",
+        "links": [
+          {
+            "name": "Azure DevOps",
+            "url": "https://dev.azure.com"
+          },
+          {
+            "name": "GitHub",
+            "url": "https://github.com"
+          },
+          {
+            "name": "Jira",
+            "url": "https://your-company.atlassian.net"
+          },
+          {
+            "name": "Jenkins",
+            "url": "https://jenkins.your-company.com"
+          },
+          {
+            "name": "Kubernetes Dashboard",
+            "url": "https://k8s.your-company.com"
+          }
+        ]
+      }
+    ],
+    "metadata": {
+      "version": "1.0.0",
+      "lastUpdated": "2025-10-24"
+    }
+  }

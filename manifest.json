@@ -1,0 +1,37 @@
+{
+    "name": "Corporate Dashboard",
+    "short_name": "Dashboard",
+    "description": "Quick access to all corporate platforms and tools",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#0f172a",
+    "orientation": "any",
+    "scope": "/",
+    "icons": [
+      {
+        "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%230f172a'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='300' fill='%233b82f6'>🎯</text></svg>",
+        "sizes": "512x512",
+        "type": "image/svg+xml",
+        "purpose": "any maskable"
+      }
+    ],
+    "categories": ["productivity", "business"],
+    "shortcuts": [
+      {
+        "name": "Infrastructure",
+        "url": "/#infra",
+        "description": "Infrastructure tools and platforms"
+      },
+      {
+        "name": "Security",
+        "url": "/#security",
+        "description": "Security and compliance tools"
+      },
+      {
+        "name": "DevOps",
+        "url": "/#devops",
+        "description": "DevOps and development tools"
+      }
+    ]
+  }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="LaunchPad - Quick access to all platforms">
+    <title>Dashboard</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎯</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>LaunchPad</h1>
+            <p class="subtitle">Quick access to all your platforms</p>
+            <div class="status" id="status">
+                <span class="status-dot online"></span>
+                <span id="status-text">Online</span>
+            </div>
+        </header>
+
+        <main id="dashboard">
+            <!-- Categories will be dynamically loaded here -->
+        </main>
+
+        <footer>
+            <p>Last updated: <span id="last-updated"></span></p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
