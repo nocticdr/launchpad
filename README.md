@@ -5,11 +5,17 @@ A modern, minimalistic, offline-capable dashboard for quick access to all your t
 ## Features
 
 ✅ **Fully Offline Capable** - Works even when Cloudflare is down or there's no internet
+
 ✅ **PWA (Progressive Web App)** - Installable on desktop and mobile
+
 ✅ **Single Page Design** - All links on one clean page
+
 ✅ **Easy Configuration** - Just edit `links.json` to add/remove links
+
 ✅ **Modern UI** - Dark theme with smooth animations
+
 ✅ **Responsive** - Works perfectly on all devices
+
 ✅ **Zero Dependencies** - Pure HTML, CSS, and JavaScript
 
 ## Quick Start
